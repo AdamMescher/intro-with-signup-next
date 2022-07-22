@@ -5,6 +5,9 @@ import Input from './Input';
 
 expect.extend(toHaveNoViolations);
 
+const { getComputedStyle } = window;
+window.getComputedStyle = (elt) => getComputedStyle(elt);
+
 describe('Input Component', () => {
   it('Should render without errors', () => {
     const name = 'firstName';
@@ -15,7 +18,13 @@ describe('Input Component', () => {
       firstName: false,
     };
     render(
-      <Input type={type} label={label} name={name} placeholder={placeholder} register={() => {}}/>
+      <Input
+        type={type}
+        label={label}
+        name={name}
+        placeholder={placeholder}
+        register={() => {}}
+      />
     );
   });
   it('Should render without axe a11y errors', async () => {
@@ -23,7 +32,15 @@ describe('Input Component', () => {
     const label = 'First Name';
     const placeholder = 'First Name';
     const type = 'text';
-    render(<Input type={type} label={label} name={name} placeholder={placeholder} register={() => {}} />);
+    render(
+      <Input
+        type={type}
+        label={label}
+        name={name}
+        placeholder={placeholder}
+        register={() => {}}
+      />
+    );
     expect(await axe(screen.getByRole('textbox'))).toHaveNoViolations();
   });
 });

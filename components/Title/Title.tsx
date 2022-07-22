@@ -10,7 +10,7 @@ interface TitleProps {
 
 const Title = ({ color, level, children, ...restProps }: TitleProps) => {
   return (
-    <Wrapper as={`h${level}`} color={color} {...restProps}>
+    <Wrapper as={level ? `h${level}` : 'h1'} color={color} {...restProps}>
       <>{children}</>
     </Wrapper>
   );
