@@ -1,0 +1,32 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import Title from './Title';
+
+<Meta
+  title='Title'
+  component={Title}
+  argTypes={{
+    color: {
+      control: { type: 'color' },
+    },
+    children: {
+      control: {
+        type: 'text',
+      },
+      defaultValue: 'Heading text here',
+    },
+    level: {
+      control: {
+        type: 'select',
+        options: [1, 2, 3, 4, 5, 6],
+      },
+    },
+  }}
+/>
+
+export const Template = (args) => <Title {...args} />;
+
+# Title
+
+<Canvas>
+  <Story name='Default'>{Template.bind({})}</Story>
+</Canvas>

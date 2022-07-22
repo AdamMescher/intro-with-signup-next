@@ -1,0 +1,54 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import Input from './Input';
+import { useForm } from 'react-hook-form';
+
+<Meta
+  title='Input'
+  component={Input}
+  argTypes={{
+    register: useForm.register,
+    type: {
+      control: {
+        type: 'select',
+        options: ['text', 'email', 'password', 'number'],
+      },
+      defaultValue: 'text',
+    },
+    label: {
+      control: { type: 'text' },
+    },
+    name: {
+      control: {
+        type: 'text',
+        placeholder: 'name goes here',
+      },
+    },
+    required: {
+      control: {
+        type: 'boolean',
+      },
+      defaultValue: false,
+    },
+  }}
+/>
+;
+
+export const Template = (args) => <Input {...args} />;
+
+# Input
+
+## Default
+
+<Canvas>
+  <Story
+    name='Default'
+    args={{
+      name: 'default',
+      label: 'Default Label',
+      placeholder: 'Default Placeholder',
+      type: 'text',
+      register: useForm.register,
+    }}>
+    {Template.bind({})}
+  </Story>
+</Canvas>

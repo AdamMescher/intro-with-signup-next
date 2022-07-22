@@ -1,0 +1,16 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import Banner from './Banner';
+
+<Meta title='Banner' component={Banner} />
+
+export const Template = (args) => (
+  <Banner {...args}>
+    <p>this is banner text</p>
+  </Banner>
+);
+
+# Banner
+
+<Canvas>
+  <Story name='Default'>{Template.bind({})}</Story>
+</Canvas>
